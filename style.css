@@ -25,3 +25,37 @@ button {
   font-size: 1rem;
   cursor: pointer;
 }
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.8rem;
+  margin-top: 0.5rem;
+  background: #f3f4f6;
+  border-radius: 8px;
+}
+
+li span {
+  cursor: pointer;
+  flex: 1;
+}
+
+li.done span {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.delete-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.9rem;
+}
