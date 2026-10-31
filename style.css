@@ -59,3 +59,25 @@ li.done span {
   padding: 0.3rem 0.7rem;
   font-size: 0.9rem;
 }
+
+#filters {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.filter-btn {
+  background: #e5e7eb;
+  border: none;
+  border-radius: 6px;
+}
+
+.filter-btn.active {
+  background: #2563eb;
+  color: white;
+}
+
+#counter {
+  color: #6b7280;
+  margin-top: 1rem;
+}
