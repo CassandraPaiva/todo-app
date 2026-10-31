@@ -4,7 +4,7 @@ A simple to-do list app built with HTML, CSS and JavaScript.
 
 **Live demo:** https://yourusername.github.io/todo-app
 
-![Screenshot](screenshot-todo.png)
+![Screenshot](Screenshot-todo.png)
 
 ## Features
 - Add, complete and delete tasks
