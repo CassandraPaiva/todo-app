@@ -1,9 +1,11 @@
 const form = document.getElementById("task-form");
 const input = document.getElementById("task-input");
 const list = document.getElementById("task-list");
+const counter = document.getElementById("counter");
+const filterButtons = document.querySelectorAll(".filter-btn");
 
-// Load saved tasks, or start with an empty list
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let currentFilter = "all";
 
 function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -13,6 +15,10 @@ function renderTasks() {
   list.innerHTML = "";
 
   tasks.forEach((task, index) => {
+    // Skip tasks that don't match the current filter
+    if (currentFilter === "active" && task.done) return;
+    if (currentFilter === "done" && !task.done) return;
+
     const li = document.createElement("li");
     if (task.done) li.classList.add("done");
 
@@ -37,7 +43,19 @@ function renderTasks() {
     li.appendChild(deleteBtn);
     list.appendChild(li);
   });
+
+  const remaining = tasks.filter((t) => !t.done).length;
+  counter.textContent = remaining + (remaining === 1 ? " task left" : " tasks left");
 }
+
+filterButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    currentFilter = btn.dataset.filter;
+    filterButtons.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    renderTasks();
+  });
+});
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -52,5 +70,4 @@ form.addEventListener("submit", (e) => {
   input.value = "";
 });
 
-// Draw saved tasks when the page loads
 renderTasks();
