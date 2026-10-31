@@ -71,3 +71,18 @@ form.addEventListener("submit", (e) => {
 });
 
 renderTasks();
+
+const themeToggle = document.getElementById("theme-toggle");
+
+function applyTheme(isDark) {
+  document.body.classList.toggle("dark", isDark);
+  themeToggle.textContent = isDark ? "☀️" : "🌙";
+  localStorage.setItem("dark", isDark);
+}
+
+// Restore the saved theme on load
+applyTheme(localStorage.getItem("dark") === "true");
+
+themeToggle.addEventListener("click", () => {
+  applyTheme(!document.body.classList.contains("dark"));
+});
